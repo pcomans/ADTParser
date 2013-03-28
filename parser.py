@@ -12,10 +12,10 @@ class ADTParser:
 		adtElement = tree.find(".//div[@id='mw-content-text'].p")
 		smallElement = adtElement.find("small")
 		adtElement.remove(smallElement)
-		self.text = etree.tostring(adtElement, method='text', encoding="utf-8")
+		self.text = etree.tostring(adtElement, method='text', encoding="utf-8").strip()
 
-		adtImage = tree.find(".//img")
-		self.imageURL = "http:" + adtImage.get("src")
+		adtImage = tree.find(".//div[@id='mw-content-text']//img")
+		self.imageURL = "http:" + adtImage.get("src").strip()
 
 def main():
 	adtparser = ADTParser('http://de.wikipedia.org/wiki/Benutzer:Volton/ADTTest')
