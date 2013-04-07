@@ -1,5 +1,6 @@
 import urllib2
 from lxml import etree
+from PIL import Image
 
 class ADTParser:
 	def __init__(self, url):
@@ -33,7 +34,20 @@ def main():
 	print(adtparser.imageURL)
 
 	imageData = adtparser.getADTImage()
-	open('adt.jpg', 'wb').write(imageData)
+	open('adt.png', 'wb').write(imageData)
+
+	#The ADT image might have a transparent background which would show up black in the BW image
+	#Create an entirely white image and paste the ADT image on top
+	adtImage = Image.open("adt.png")
+	whiteBG = Image.new("RGB", adtImage.size, "white")
+
+	#Note that if you paste an "RGBA" image, the alpha band is ignored.
+	#You can work around this by using the same image as both source image and mask.
+	whiteBG.paste(adtImage, (0,0), adtImage)
+
+
+	adtImageBW = whiteBG.convert("1")
+	adtImageBW.save('adt_bw.png')
 
 if __name__ == "__main__":
 	main()
