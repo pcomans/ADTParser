@@ -7,7 +7,12 @@ It expects that you create a subpage of your Wikipedia user page and add the fol
 
     {{Wikipedia:Hauptseite/Artikel des Tages/{{LOCALDAYNAME}}}}
 
-Prerequisites
+On Debian
+    sudo apt-get install libjpeg-dev
 
+On OS X
+    brew install libjpeg
+
+Python libraries
     sudo pip install lxml
     sudo pip install pil
