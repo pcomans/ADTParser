@@ -19,3 +19,16 @@ Python libraries
 
     sudo pip install lxml
     sudo pip install pil
+
+Setup instructions on Raspbian
+
+    sudo aptitude install build-essential
+    sudo aptitude install libxml2-dev
+    sudo aptitude install libxslt-dev
+    sudo aptitude install python-dev
+    sudo aptitude install python-setuptools
+    sudo aptitude install python-imaging
+    sudo easy_install pip
+    sudo pip install lxml
+
+Running pip install took a very long time on my machine. Don't get discouraged. Go get a coffee or something.
